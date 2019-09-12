@@ -49,4 +49,4 @@ while(True):
 	check_price()
 	time.sleep(10800)
 	
-#https://www.youtube.com/watch?v=Bg9r_yLk7VY AT 11:13   pw: pyxd hxag lwvn dtni
+#https://www.youtube.com/watch?v=Bg9r_yLk7VY 
