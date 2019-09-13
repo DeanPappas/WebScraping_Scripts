@@ -19,7 +19,6 @@ converted_price = float(price[1:6])
 
 print(title.strip())
 print(price.strip())
-print(soup.title.string)
 
 def check_price():
 	if converted_price < 39.95:
