@@ -9,6 +9,7 @@ import smtplib
 import time
 
 user = input("Enter a user: ")
+tweetNum = int(input("Which tweet would you like to see: "))
 
 URL1 = ("https://twitter.com/%s" % user)
 
@@ -22,25 +23,22 @@ href = soup.find_all(class_="ProfileHeaderCard")
 profileNumbers = soup.find_all(class_="ProfileNav-value")
 profileHeader = href[0].get_text().replace("\n"," ")
 tweets = []
-test = soup.find_all(class_="css-901oao css-16my406 r-1qd0xha r-ad9z0x r-bcqeeo r-qvutc0")
 
 timeline = soup.select("#timeline li.stream-item")
 for tweet in timeline:
-	tweet_id = tweet["data-item-id"]
 	tweet_text = tweet.select("p.tweet-text")[0].get_text()
-	tweets.append({"id": tweet_id, "text": tweet_text})
+	tweets.append(tweet_text)
                              
-print(tweets[0])
-print(test)
-#print(profileHeader[profileHeader.find("@")+(len(user)+4):-41])
+print("Selected Tweet:", tweets[tweetNum])
 
-'''
+
+
 followers = int(profileNumbers[2].get_text())
 following = int(profileNumbers[1].get_text())
 ratio = float(followers/following)
 
+print("Bio:", profileHeader[profileHeader.find("@")+(len(user)+4):-41])
 print("Total tweets:", profileNumbers[0].get_text().rstrip())
 print("Follwing:", profileNumbers[1].get_text())
 print("Follwers:", profileNumbers[2].get_text())
 print("%s's followers to following ratio is: %.2f" % (user, ratio))
-'''
