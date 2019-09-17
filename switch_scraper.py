@@ -8,6 +8,7 @@ import requests
 from bs4 import BeautifulSoup
 import smtplib
 import time
+from selenium import webdriver
 
 headers = {"User-Agent": 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36'}
 
@@ -26,14 +27,15 @@ print("Price:", price)
 # BEAT COP
 beatcop = "https://www.nintendo.com/games/detail/beat-cop-switch/"
 
+
+
 headers = {"User-Agent": 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36'}
 page2 = requests.get(beatcop, headers = headers)
 soup2 = BeautifulSoup(page2.content, "html.parser")
 
 title = soup2.find(class_ = "title").get_text().strip().rstrip("\nNintendo Switch")
 price = soup2.find(class_ = "msrp").get_text().strip()
-#sale = soup.find(class_ = "sale-price")
-sale = soup2.find("div", {"class": "sale-price"})
+sale = soup2.find(class_ = "sale-price").get_text().strip()
 
 print("Game:", title)
 print("Price:", price)
