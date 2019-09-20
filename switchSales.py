@@ -20,9 +20,12 @@ soup1 = BeautifulSoup(page1.content, "html.parser")
 
 title = soup1.find(class_ = "title").get_text().strip().rstrip("\nNintendo Switch")
 price = soup1.find(class_ = "msrp").get_text().strip()
+sale = soup1.find("div", {"class": "price discounted loaded"})
 
 print("Game:", title)
 print("Price:", price)
+print(sale)
+
 
 # BEAT COP
 beatcop = "https://www.nintendo.com/games/detail/beat-cop-switch/"
@@ -35,8 +38,11 @@ soup2 = BeautifulSoup(page2.content, "html.parser")
 
 title = soup2.find(class_ = "title").get_text().strip().rstrip("\nNintendo Switch")
 price = soup2.find(class_ = "msrp").get_text().strip()
-sale = soup2.find(class_ = "sale-price").get_text().strip()
+#sale = soup2.find(class_ = "price discounted loaded")
+sale = soup2.find("div", {"class": "discounted"})
 
 print("Game:", title)
 print("Price:", price)
-print("Sale?", sale)
+print(sale)
+if soup2.find("div", {"class": "discounted"}) is not None:
+    print("Tag Found")

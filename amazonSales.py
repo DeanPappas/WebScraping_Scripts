@@ -43,7 +43,7 @@ def send_email():
 	print("EMAIL SENT")
 	
 	server.quit()
-	
+
 while(True):	
 	check_price()
 	time.sleep(10800)
