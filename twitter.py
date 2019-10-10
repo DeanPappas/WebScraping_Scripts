@@ -5,6 +5,7 @@ https://www.youtube.com/watch?v=aIPqt-OdmS0
 '''
 import requests
 from bs4 import BeautifulSoup
+import soupsieve
 import smtplib
 import time
 
@@ -23,8 +24,8 @@ tweets = []
 
 timeline = soup.select("#timeline li.stream-item")
 for tweet in timeline:
-	tweet_text = tweet.select("p.tweet-text")[0].get_text()
-	tweets.append(tweet_text)
+    tweet_text = tweet.select("p.tweet-text")[0].get_text()
+    tweets.append(tweet_text)
 
 followers = int(profileNumbers[2].get_text())
 following = int(profileNumbers[1].get_text())
@@ -38,11 +39,11 @@ print("Total tweets:", profileNumbers[0].get_text().rstrip())
 print("Follwing:", profileNumbers[1].get_text())
 print("Follwers:", profileNumbers[2].get_text())
 print("%s's followers to following ratio is: %.2f" % (user, ratio))
-print("Selected Tweet: ", tweets[tweetNum])
+print("Selected Tweet: ", tweets[tweetNum-1])
 '''
 print("Selected Tweets:\n")
 for x in tweets:
-	print(x, "\n")
+    print(x, "\n")
 '''
 print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 
